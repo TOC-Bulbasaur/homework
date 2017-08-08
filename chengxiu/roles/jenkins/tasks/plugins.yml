@@ -1,0 +1,27 @@
+---
+  - name: show file context
+    become: true
+    command: cat /var/lib/jenkins/secrets/initialAdminPassword
+    register: result
+
+  - name: echo result
+    command: echo {{result}}
+
+  - name: Start jenkins service
+    become: true
+    service:
+      name: jenkins
+      state: started
+
+  - name: Install Jenkins Plugins
+    become: true
+    jenkins_plugin:
+      name: "{{item.key}}"
+      params: "{{ my_jenkins_params }}"
+    with_dict: "{{jenkins_plugins}}"
+
+  - name: Restart Jenkins to make the plugin data available
+    service:
+      name: jenkins
+      state: restarted
+

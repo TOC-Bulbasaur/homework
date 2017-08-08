@@ -1,0 +1,28 @@
+---
+- name: Add Jenkins apt repository key.
+  apt_key:
+    url: https://jenkins-ci.org/debian/jenkins-ci.org.key
+    state: present
+    validate_certs: no
+
+- name: Add Jenkins apt repository.
+  apt_repository:
+    repo: deb http://pkg.jenkins.io/debian-stable binary/
+    state: present
+    update_cache: yes
+
+- name: Update apt cache
+  apt: update_cache=yes
+
+- name: Installing Jenkins
+  apt:
+    name: jenkins
+    state: latest
+
+- name: Get file context
+  become: true
+  command: cat /var/lib/jenkins/secrets/initialAdminPassword
+  register: result
+
+- name: Configure Jenkins
+  include: plugins.yml

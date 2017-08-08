@@ -1,0 +1,4 @@
+---
+- name: Ensure installed python
+  become: true
+  raw: apt-get install -y python-minimal python3

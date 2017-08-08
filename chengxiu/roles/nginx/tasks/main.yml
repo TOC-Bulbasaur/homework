@@ -1,0 +1,20 @@
+---
+- name: Nginx | Adding Nginx signing key
+  apt_key: url=http://nginx.org/keys/nginx_signing.key state=present
+
+- name: Nginx | Adding sources.list deb url for Nginx
+  lineinfile: dest=/etc/apt/sources.list line="deb http://nginx.org/packages/mainline/ubuntu/ trusty nginx"
+
+- name: Nginx | Updating apt cache
+  apt:
+    update_cache: yes
+
+- name: Nginx | Installing Nginx
+  apt:
+    pkg: nginx
+    state: latest
+
+- name: Nginx | Starting Nginx
+  service:
+    name: nginx
+    state: started

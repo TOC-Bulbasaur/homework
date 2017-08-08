@@ -1,0 +1,14 @@
+---
+jenkins_plugins:
+  build-pipeline-plugin:
+    enabled: yes
+  github:
+    enabled: yes
+  git:
+    enabled: yes
+  workflow-aggregator:
+    enabled: yes
+my_jenkins_params:
+  url_username: admin
+  url_password: "{{result.stdout}}"
+  url: http://localhost:8080

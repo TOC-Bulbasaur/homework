@@ -1,0 +1,9 @@
+---
+- name: install git
+  apt:
+    name: git
+    update_cache: yes
+- name: install nginx
+  apt:
+    name: nginx
+    update_cache: yes

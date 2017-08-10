@@ -1,0 +1,22 @@
+---
+- name: create vagrant folder
+  file:
+    path: ~/Documents/Vagrant/vagrant_ubuntu
+    state: directory
+    mode: 0755
+- name: copy vagrantfile to vagrant
+  copy:
+    src: Vagrantfile
+    dest: ~/Documents/Vagrant/vagrant_ubuntu/
+- name: set vagrant up
+  shell: vagrant up 
+  args:
+    chdir: ~/Documents/Vagrant/vagrant_ubuntu/
+- homebrew:
+    name: sshpass
+    state: present
+    update_homebrew: yes
+- name: rm know_host file
+  file:
+    dest: ~/.ssh/known_hosts 
+    state: absent

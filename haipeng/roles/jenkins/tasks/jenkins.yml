@@ -1,0 +1,19 @@
+  - name: import key
+    command:
+       rpm --import https://pkg.jenkins.io/redhat/jenkins.io.key
+  - name: yum install java
+    yum:
+       name: java-1.8.0-openjdk
+       state: latest
+  - name: add jenkins.repo
+    template:
+       src: jenkins.repo
+       dest: /etc/yum.repos.d/jenkins.repo
+  - name: yum install jenkins
+    yum:
+       name: jenkins
+       state: latest
+  - name: start jenkins service
+    service:
+       name: jenkins
+       state: started

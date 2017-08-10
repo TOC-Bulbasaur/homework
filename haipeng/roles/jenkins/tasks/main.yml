@@ -12,8 +12,25 @@
   - name: yum install jenkins
     yum:
        name: jenkins
-       state: latest
+       state: latest   
+  - name: disable security
+    command:
+       sed -i 's/<useSecurity>true/<useSecurity>false/g' /var/lib/jenkins/config.xml
   - name: start jenkins service
     service:
        name: jenkins
        state: started
+  - name: sleep
+    command:
+       sleep 30s
+  - name: Install plugin
+    jenkins_plugin:
+       name: {{ item.key }}
+       state: "{{ 'enabled' if item.value['enabled'] else 'disabled'}}"
+       url: http://127.0.0.1:8080
+    with_dict: "plugins"
+  - name: enable security
+    command:
+       sed -i 's/<useSecurity>false/<useSecurity>true/g' /var/lib/jenkins/config.xml
+       
+    

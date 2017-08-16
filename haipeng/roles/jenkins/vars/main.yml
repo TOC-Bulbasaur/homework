@@ -1,0 +1,8 @@
+---
+plugins:
+  build-pipeline-plugin:
+    enabled: yes
+  github:
+    enabled: yes
+  git:
+    enabled: yes

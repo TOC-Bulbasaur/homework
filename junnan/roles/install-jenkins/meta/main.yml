@@ -1,0 +1,4 @@
+---
+  dependencies:
+    - { role: install-git, become: yes }
+    - { role: ansible-lint, become: yes }

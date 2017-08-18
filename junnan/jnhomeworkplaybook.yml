@@ -7,4 +7,4 @@
     - install-java
     - install-python
     - { role: my_first_jenkins_job, user: jnliuadmin, password: adminjnliu }
-    #- test
+    - install-nginx

@@ -1,0 +1,10 @@
+node {
+   def mvnHome
+   stage('Preparation') {
+      git 'https://github.com/haipengchen01/ntest.git'
+   }
+   stage('Build') {
+      sh '''scp nginx.html root@192.168.10.10:/usr/share/nginx/html/index.html
+      scp nginx.html root@192.168.50.4:/usr/share/nginx/html/index.html'''
+   }
+}

@@ -1,0 +1,8 @@
+  - name: add nginx.repo
+    template:
+       src: nginx.repo
+       dest: /etc/yum.repos.d/nginx.repo
+  - name: yum install nginx
+    yum:
+       name: nginx
+       state: latest   

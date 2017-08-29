@@ -75,5 +75,6 @@
       - workflow-step-api
       - workflow-support
       - ws-cleanup
+      - deploy
     notify:
       - restart jenkins

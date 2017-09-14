@@ -4,3 +4,4 @@
   become: true
   roles: 
     - install-nginx
+    - install-java

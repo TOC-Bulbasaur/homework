@@ -6,5 +6,6 @@
   roles:
     - install-java
     - install-python
+    - install-mysql
     - { role: my_first_jenkins_job, user: jnliuadmin, password: adminjnliu }
     - install-nginx

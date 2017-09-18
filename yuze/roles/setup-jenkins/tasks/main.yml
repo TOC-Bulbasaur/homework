@@ -14,7 +14,7 @@
     name: jenkins
     update_cache: yes
 
-# - name: set jenkins service up
-#   service: 
-#     name: jenkins
-#     state: started
+- name: set jenkins service up
+  service: 
+    name: jenkins
+    state: restarted

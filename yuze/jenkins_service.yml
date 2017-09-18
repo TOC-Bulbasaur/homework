@@ -1,16 +1,12 @@
 ---
-# - name: create a vagrantbox
-#   hosts: local
-#   roles:
-#   - role: create-vagrant_ubuntu
-#     connection: local
-
 - name: build a Jenkins Service
   hosts: test_vagrant
+  # remote_user: root
+  # gather_facts: False
   sudo: true
   remote_user: vagrant
   roles:
-  # - role: install-git
-  # - role: install-java8
-  # - role: setup-jenkins
-  - role: configure-jenkins
+  - role: install-git
+  - role: install-java8
+  - role: setup-jenkins
+  - role: jenkins-plugins

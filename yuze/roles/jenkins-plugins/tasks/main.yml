@@ -2,8 +2,8 @@
 - name: disable security lineinfile
   lineinfile:
     path: /var/lib/jenkins/config.xml
-    regexp: '<useSecurity>true'
-    line: '<useSecurity>false'
+    regexp: '<useSecurity>true</useSecurity>'
+    line: '<useSecurity>false</useSecurity>'
 - name: start jenkins service
   service:
      name: jenkins
@@ -21,5 +21,5 @@
 - name: enable security
   lineinfile:
     path: /var/lib/jenkins/config.xml
-    regexp: '<useSecurity>false'
-    line: '<useSecurity>true'
+    regexp: '<useSecurity>false</useSecurity>'
+    line: '<useSecurity>true</useSecurity>'

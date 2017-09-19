@@ -1,0 +1,33 @@
+---
+- name: Install MySQL
+  apt: name={{ item }} update_cache=yes cache_valid_time=3600 state=present
+  sudo: yes
+  with_items:
+    - python-mysqldb
+    - mysql-server
+
+- name: Start the MySQL service
+  sudo: yes
+  service:
+    name: mysql
+    state: started
+    enabled: true
+
+- name: Create a new database with name 'test_database'
+  mysql_db:
+    name: my_db
+    state: present
+
+- name: Copy database dump file
+  copy:
+    src: dump.sql
+    dest: /tmp
+
+- name: Compress sql file
+  command: bzip2 -f /tmp/dump.sql
+
+- name: Restore database
+  mysql_db:
+    name: my_db
+    state: import
+    target: /tmp/dump.sql.bz2

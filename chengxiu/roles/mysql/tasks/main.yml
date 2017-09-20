@@ -1,13 +1,13 @@
 ---
 - name: Install MySQL
   apt: name={{ item }} update_cache=yes cache_valid_time=3600 state=present
-  sudo: yes
+  become: true
   with_items:
     - python-mysqldb
     - mysql-server
 
 - name: Start the MySQL service
-  sudo: yes
+  become: true
   service:
     name: mysql
     state: started

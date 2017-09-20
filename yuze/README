@@ -1,0 +1,2 @@
+ubuntu 先执行 sudo visudo
+添加jenkins    ALL=(ALL) NOPASSWD: ALL

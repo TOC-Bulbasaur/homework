@@ -4,7 +4,7 @@ node {
     }
     stage('Copy Webpage to Nginx') {
         sh '''
-        sudo cp helloWorld.html /home/webpage'''
+        sudo cp index.html /home/webpage'''
     }
     stage('Restart Nginx') {
         sh '''sudo nginx -s reload'''

@@ -1,2 +1,4 @@
 ubuntu 先执行 sudo visudo
 添加jenkins    ALL=(ALL) NOPASSWD: ALL
+
+nginx 访问ip：端口不用加文件夹名。我也不知道为啥

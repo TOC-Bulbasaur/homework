@@ -4,7 +4,7 @@ node {
     }
     stage('Copy Webpage to Nginx') {
         sh '''
-        sudo /home/webpage/index.html
+        sudo rm /home/webpage/index.html
         sudo cp index.html /home/webpage'''
     }
     stage('Restart Nginx') {

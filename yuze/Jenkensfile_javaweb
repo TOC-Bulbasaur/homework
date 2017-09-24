@@ -1,6 +1,6 @@
 node {
     stage('Download Project') {
-        git 'git@github.com:anychart-integrations/java-jsp-jdbc-mysql-template.git'
+        git 'https://github.com/anychart-integrations/java-jsp-jdbc-mysql-template.git'
     }
     stage('Set up database') {
         sh '''

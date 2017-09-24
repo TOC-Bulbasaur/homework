@@ -15,3 +15,17 @@
   service: 
     name: nginx
     state: started
+- name: install tomcat7
+  sudo: yes
+  apt:
+    name: tomcat7
+- name: add java_home
+  lineinfile:
+    path: /etc/default/tomcat7
+    regexp: ''
+    insertafter: EOF
+    line: 'JAVA_HOME="/usr/lib/jvm/java-8-oracle/jre/"'
+- name: start tomcat7 service
+  service:
+    name: tomcat7
+    state: restarted

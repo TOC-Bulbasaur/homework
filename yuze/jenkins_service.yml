@@ -6,7 +6,7 @@
   sudo: true
   remote_user: vagrant
   roles:
-  - role: install-git
   - role: install-java8
+  - role: install-git
   - role: setup-jenkins
   - role: jenkins-plugins

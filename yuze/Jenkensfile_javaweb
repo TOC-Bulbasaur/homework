@@ -1,0 +1,13 @@
+node {
+    stage('Download Project') {
+        git 'git@github.com:anychart-integrations/java-jsp-jdbc-mysql-template.git'
+    }
+    stage('Set up database') {
+        sh '''
+        cd java-jsp-jdbc-mysql-template
+        mysql < database_backup.sql'''
+    }
+    stage('Run app') {
+        sh '''mvn clean install tomcat7:run'''
+    }
+}

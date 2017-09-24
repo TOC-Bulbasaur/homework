@@ -1,0 +1,18 @@
+---
+- name: Install Mysql-Python
+  apt:
+    name: python-mysqldb
+    update_cache: yes
+- name: Create a new database with name 'dbInfo'
+  mysql_db:
+    login_user: root
+    login_password: root
+    name: dbInfo
+    state: present
+- name: Import file.sql similar to mysql -u <username> -p <password> < hostname.sql
+  mysql_db:
+    login_user: root
+    login_password: root
+    name: dbInfo
+    state: import
+    target: /tmp/tablecreate.sql

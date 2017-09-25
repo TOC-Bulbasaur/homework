@@ -10,3 +10,4 @@
   - role: install-git
   - role: setup-jenkins
   - role: jenkins-plugins
+  - role: set-mysql-DB

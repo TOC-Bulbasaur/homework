@@ -5,7 +5,7 @@ node {
     stage('Set up database') {
         sh '''
         cd java-jsp-jdbc-mysql-template
-        mysql < database_backup.sql'''
+        mysql -u root -proot anychart_db < database_backup.sql'''
     }
     stage('Run app') {
         sh '''mvn clean install tomcat7:run'''

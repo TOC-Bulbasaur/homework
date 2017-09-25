@@ -25,6 +25,11 @@
     regexp: ''
     insertafter: EOF
     line: 'JAVA_HOME="/usr/lib/jvm/java-8-oracle/jre/"'
+- name: change port to 8085
+  lineinfile:
+    path: /etc/tomcat7/server.xml
+    regexp: '<Connector port="8080" protocol="HTTP/1.1"'
+    line: ' <Connector port="8085" protocol="HTTP/1.1"'
 - name: start tomcat7 service
   service:
     name: tomcat7

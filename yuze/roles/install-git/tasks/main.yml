@@ -3,7 +3,34 @@
   apt:
     name: git
     update_cache: yes
+- name: install maven
+  sudo: yes
+  apt:
+    name: maven
 - name: install nginx
   apt:
     name: nginx
     update_cache: yes
+- name: starte nginx
+  service: 
+    name: nginx
+    state: started
+- name: install tomcat7
+  sudo: yes
+  apt:
+    name: tomcat7
+- name: add java_home
+  lineinfile:
+    path: /etc/default/tomcat7
+    regexp: ''
+    insertafter: EOF
+    line: 'JAVA_HOME="/usr/lib/jvm/java-8-oracle/jre/"'
+- name: change port to 8085
+  lineinfile:
+    path: /etc/tomcat7/server.xml
+    regexp: '<Connector port="8080" protocol="HTTP/1.1"'
+    line: ' <Connector port="8085" protocol="HTTP/1.1"'
+- name: start tomcat7 service
+  service:
+    name: tomcat7
+    state: restarted

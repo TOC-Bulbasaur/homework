@@ -1,0 +1,6 @@
+---
+- name: create a vagrantbox
+  hosts: local
+  roles:
+  - role: create-vagrant_ubuntu
+    connection: local

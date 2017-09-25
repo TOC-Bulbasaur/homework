@@ -1,17 +1,17 @@
 ---
 - name: create vagrant folder
   file:
-    path: ~/Documents/Vagrant/vagrant_ubuntu
+    path: ~/Documents/Vagrant/vagrant_ubuntu3
     state: directory
     mode: 0755
 - name: copy vagrantfile to vagrant
   copy:
     src: Vagrantfile
-    dest: ~/Documents/Vagrant/vagrant_ubuntu/
+    dest: ~/Documents/Vagrant/vagrant_ubuntu3/
 - name: set vagrant up
   shell: vagrant up 
   args:
-    chdir: ~/Documents/Vagrant/vagrant_ubuntu/
+    chdir: ~/Documents/Vagrant/vagrant_ubuntu3/
 - homebrew:
     name: sshpass
     state: present

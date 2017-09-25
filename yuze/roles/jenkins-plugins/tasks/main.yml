@@ -1,0 +1,25 @@
+---
+- name: disable security lineinfile
+  lineinfile:
+    path: /var/lib/jenkins/config.xml
+    regexp: '<useSecurity>true</useSecurity>'
+    line: '<useSecurity>false</useSecurity>'
+- name: start jenkins service
+  service:
+     name: jenkins
+     state: started
+- name: sleep
+  command:
+     sleep 30s
+- name: install plugin
+  jenkins_plugin:
+     name: "{{ item.key }}"
+     state: "{{ 'enabled' if item.value['enabled'] else 'disabled'}}"
+  when: >
+    'enabled' in item.value
+  with_dict: "{{ plugins }}"
+- name: enable security
+  lineinfile:
+    path: /var/lib/jenkins/config.xml
+    regexp: '<useSecurity>false</useSecurity>'
+    line: '<useSecurity>true</useSecurity>'

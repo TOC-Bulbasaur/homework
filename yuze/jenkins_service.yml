@@ -7,7 +7,8 @@
   remote_user: vagrant
   roles:
   - role: install-java8
-  - role: install-git
+  - role: install-git-tomcat-nginx
   - role: setup-jenkins
   - role: jenkins-plugins
+  - role: install_mysql
   - role: set-mysql-DB

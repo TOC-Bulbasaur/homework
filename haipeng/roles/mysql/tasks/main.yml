@@ -1,0 +1,18 @@
+  - name: import repo
+    command:
+       rpm -ivh https://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm
+  - name: yum install mysql
+    yum:
+       name: mysql-server
+       state: latest
+  - name: start mysql service
+    service:
+       name: mysqld
+       state: started
+  - name: Create a new database
+    mysql_db:
+       login_user: "root"
+       login_password: "Test1234!"
+       login_host: "0.0.0.0"
+       name: test
+       state: present

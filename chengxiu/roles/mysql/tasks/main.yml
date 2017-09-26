@@ -13,21 +13,13 @@
     state: started
     enabled: true
 
-- name: Create a new database with name 'test_database'
-  mysql_db:
-    name: my_db
+- name: Set root user password
+  mysql_user:
+    name: root
+    host: "localhost"
+    password: "root"
+    check_implicit_admin: yes
+    login_user: "root"
+    login_password: ""
+    priv: '*.*:ALL,GRANT'
     state: present
-
-- name: Copy database dump file
-  copy:
-    src: dump.sql
-    dest: /tmp
-
-- name: Compress sql file
-  command: bzip2 -f /tmp/dump.sql
-
-- name: Restore database
-  mysql_db:
-    name: my_db
-    state: import
-    target: /tmp/dump.sql.bz2

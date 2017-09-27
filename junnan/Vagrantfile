@@ -31,11 +31,27 @@ Vagrant.configure("2") do |config|
 
   end
 
+  config.vm.define "default0" do |default0|
+
+    default0.vm.box = "ubuntu/trusty64"
+    default0.vm.network "forwarded_port", guest: 8080, host: 9081
+    default0.vm.network "forwarded_port", guest: 80, host: 9091
+
+    default0.vm.network "private_network", ip: "192.168.33.90"
+    default0.vm.provision "ansible" do |ansb|
+      ansb.playbook = "jnhomeworkplaybook.yml"
+      # ansb.sudo = true
+    end
+
+    default0.vm.provider "virtualbox" do |vb|
+      vb.memory = "4096"
+    end
+
+  end
+
   config.vm.define "web1" do |web1|
 
     web1.vm.box = "ubuntu/trusty64"
-    #config.vm.network "forwarded_port", guest: 8080, host: 9080
-    #config.vm.network "forwarded_port", guest: 80, host: 9090
 
     web1.vm.network "private_network", ip: "192.168.33.10"
     web1.vm.provision "ansible" do |ansb|
@@ -49,11 +65,25 @@ Vagrant.configure("2") do |config|
 
   end
 
+  config.vm.define "web11" do |web11|
+
+    web11.vm.box = "ubuntu/trusty64"
+
+    web11.vm.network "private_network", ip: "192.168.33.101"
+    web11.vm.provision "ansible" do |ansb|
+      ansb.playbook = "serverplaybook.yml"
+      # ansb.sudo = true
+    end
+
+    web11.vm.provider "virtualbox" do |vb|
+      vb.memory = "1024"
+    end
+
+  end
+
   config.vm.define "web2" do |web2|
   
     web2.vm.box = "ubuntu/trusty64"
-    #config.vm.network "forwarded_port", guest: 8080, host: 9080
-    #config.vm.network "forwarded_port", guest: 80, host: 9090
 
     web2.vm.network "private_network", ip: "192.168.33.11"
     web2.vm.provision "ansible" do |ansb|
@@ -62,6 +92,22 @@ Vagrant.configure("2") do |config|
     end
 
     web2.vm.provider "virtualbox" do |vb|
+      vb.memory = "1024"
+    end
+
+  end
+
+  config.vm.define "web22" do |web22|
+  
+    web22.vm.box = "ubuntu/trusty64"
+
+    web22.vm.network "private_network", ip: "192.168.33.112"
+    web22.vm.provision "ansible" do |ansb|
+      ansb.playbook = "serverplaybook.yml"
+      # ansb.sudo = true
+    end
+
+    web22.vm.provider "virtualbox" do |vb|
       vb.memory = "1024"
     end
 

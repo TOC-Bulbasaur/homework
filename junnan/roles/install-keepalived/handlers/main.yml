@@ -1,0 +1,9 @@
+---  
+- name: reload the services
+  service:
+    name: "{{ item }}"
+    state: restarted
+  with_items:
+    - keepalived
+    - nginx
+  become: yes

@@ -9,6 +9,7 @@
     - libxslt-dev
     - python-dev
     - gcc
+    - zlib1g-dev
 
 - name: install jenkins_job dependencies (via pip)
   pip:

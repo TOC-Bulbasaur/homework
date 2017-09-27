@@ -1,2 +1,9 @@
 [default]
-192.168.33.9
+192.168.33.9 state=MASTER priority=100
+192.168.33.90 state=BACKUP priority=90
+[backend]
+192.168.33.10
+192.168.33.101
+[frontend]
+192.168.33.11
+192.168.33.112

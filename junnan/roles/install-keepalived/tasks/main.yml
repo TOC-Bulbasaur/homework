@@ -1,0 +1,9 @@
+---
+- name: installing keepalived
+  apt: 
+    name: keepalived
+    state: installed
+
+- name: config keepalived
+  template: src=keepalived.j2 dest=/etc/keepalived/keepalived.conf
+  notify: reload the services

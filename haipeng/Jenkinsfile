@@ -1,10 +1,32 @@
-node {
+node('master') {
    def mvnHome
    stage('Preparation') {
-      git 'https://github.com/haipengchen01/ntest.git'
+      git 'https://github.com/haipengchen01/SpringBoot-vue.git'
    }
-   stage('Build') {
-      sh '''scp nginx.html root@192.168.10.10:/usr/share/nginx/html/index.html
-      scp nginx.html root@192.168.50.4:/usr/share/nginx/html/index.html'''
+   stage('Backend Build') {
+     sh '''mvn clean package  -Dmaven.test.skip=true'''  
+   }
+   stage('Frontend Build') {
+     sh '''cd frontend
+     npm install
+     npm run build
+     zip dist.zip dist'''  
+   }
+   stage('Test') {
+     sh '''echo test '''  
+   }
+   stage('Backend Deploy') {
+     sh '''scp target/springboot_vue-0.0.1-SNAPSHOT.jar root@192.168.4.3:/root/
+     scp target/springboot_vue-0.0.1-SNAPSHOT.jar root@192.168.4.2:/root/
+     '''  
+   }
+   stage('Frontend Deploy') {
+     sh '''scp -r frontend/dist root@192.168.3.4:/usr/share/nginx/html/
+     scp -r frontend/dist root@192.168.50.6:/usr/share/nginx/html/
+     '''  
+   }
+   stage('Backend start') {
+     build 'back'
+     build 'back2'
    }
 }

@@ -1,0 +1,25 @@
+---
+- name: Install MySQL
+  apt: name={{ item }} update_cache=yes cache_valid_time=3600 state=present
+  become: true
+  with_items:
+    - python-mysqldb
+    - mysql-server
+
+- name: Start the MySQL service
+  become: true
+  service:
+    name: mysql
+    state: started
+    enabled: true
+
+- name: Set root user password
+  mysql_user:
+    name: root
+    host: "localhost"
+    password: "root"
+    check_implicit_admin: yes
+    login_user: "root"
+    login_password: ""
+    priv: '*.*:ALL,GRANT'
+    state: present

@@ -4,10 +4,15 @@ node {
     }
     stage('Set up database') {
         sh '''
-        cd java-jsp-jdbc-mysql-template
         mysql -u root -proot anychart_db < database_backup.sql'''
     }
-    stage('Run app') {
-        sh '''mvn clean install tomcat7:run'''
+    stage('Build app') {
+        sh '''mvn package'''
+    }
+    stage('Deploy war package to Tomcat') {
+        sh '''sudo cp target/java-jsp-jdbc-mysql-template.war /var/lib/tomcat7/webapps'''
+    }
+    stage('Start Tomcat service') {
+        sh '''sudo service tomcat7 start'''
     }
 }

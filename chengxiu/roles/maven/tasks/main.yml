@@ -1,0 +1,4 @@
+---
+- name: install maven (and other packages if needed)
+  become: yes
+  apt: name=maven state=latest update_cache=yes cache_valid_time=3600

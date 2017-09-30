@@ -1,11 +1,12 @@
 ---
-- hosts: default
+- hosts: remote
   become: true
   gather_facts: False
 
   roles:
     - python
     - java
-    - jenkins
     - git
+    - nginx
+    - mysql
     - maven

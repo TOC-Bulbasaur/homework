@@ -65,7 +65,7 @@
   register: jenkins_crumb
   until: jenkins_crumb.content.find('Please wait while Jenkins is getting ready to work') == -1
   retries: 10
-  delay: 20
+  delay: 5
 
 - name: Set crumb token
   set_fact:

@@ -1,0 +1,10 @@
+---
+- name: installing ansible
+  apt:
+    name: ansible
+    state: installed
+
+- name: config hosts
+  copy:
+    src: ../../../hosts
+    dest: /etc/ansible/hosts

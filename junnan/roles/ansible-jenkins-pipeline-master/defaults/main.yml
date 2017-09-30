@@ -9,4 +9,4 @@ jenkins_plugins:
 jenkins_seed_name: pipeline-seed
 jenkins_seed_template: seed-config.xml.j2
 jenkins_job_template: jobs.groovy.j2
-jenkins_admin_password: hello
+jenkins_admin_password: "hello"

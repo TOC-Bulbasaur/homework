@@ -1,5 +1,5 @@
 ---
-- name: homework-jenkins
+- name: excuting jnhomework Playbook for default
   hosts: all
   become: true
   
@@ -10,4 +10,5 @@
     #- { role: my_first_jenkins_job, user: jnliuadmin, password: adminjnliu }
     #- install-nginx
     #- install-keepalived
-    - ansible-jenkins-pipeline-master
+    #- ansible-jenkins-pipeline-master
+    - install-ansible

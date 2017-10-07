@@ -1,11 +1,9 @@
 ---
-- hosts: default
+- hosts: web1, web2
   become: true
   gather_facts: False
 
   roles:
     - python
-    - java
-    - jenkins
     - git
-    - maven
+    - nginx

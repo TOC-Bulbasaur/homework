@@ -2,4 +2,10 @@
 192.168.30.11
 
 [remote]
-192.168.30.12 ansible_connection=ssh ansible_ssh_user=vagrant ansible_ssh_pass=vagrant
+192.168.30.12 ansible_ssh_user=vagrant ansible_ssh_pass=vagrant
+
+[web1]
+192.168.30.13
+
+[web2]
+192.168.30.23

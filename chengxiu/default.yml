@@ -1,0 +1,13 @@
+---
+- hosts: default
+  become: true
+  gather_facts: False
+
+  roles:
+    - python
+    - java
+    - jenkins
+    - git
+    - maven
+    - ansible
+    - node

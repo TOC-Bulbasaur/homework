@@ -1,0 +1,11 @@
+---
+- name: Install NodeJS and NPM
+  become: yes
+  apt:
+    name: '{{ item }}'
+    state: latest
+    update_cache: yes
+  with_items:
+    - nodejs
+    - nodejs-legacy
+    - npm

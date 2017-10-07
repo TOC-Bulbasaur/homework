@@ -48,6 +48,22 @@ Vagrant.configure("2") do |config|
 
   end
 
+  config.vm.define "db2" do |db2|
+
+      db2.vm.box = "ubuntu/xenial64"
+
+      db2.vm.network "private_network", ip: "192.168.30.22"
+
+      db2.vm.provision :ansible do |ansible|
+        ansible.playbook = "remote-config.yml"
+      end
+
+      db2.vm.provider "virtualbox" do |vb|
+        vb.memory = "2048"
+      end
+
+  end
+
   config.vm.define "web1" do |web1|
 
       web1.vm.box = "ubuntu/xenial64"
@@ -68,7 +84,7 @@ Vagrant.configure("2") do |config|
 
       web2.vm.box = "ubuntu/xenial64"
 
-      web2.vm.network "private_network", ip: "192.168.30.23"
+      web2.vm.network "private_network", ip: "192.168.30.33"
 
       web2.vm.provision :ansible do |ansible|
         ansible.playbook = "front-end.yml"

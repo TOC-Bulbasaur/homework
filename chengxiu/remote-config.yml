@@ -1,5 +1,5 @@
 ---
-- hosts: remote
+- hosts: remote, db2
   become: true
   gather_facts: False
 
@@ -7,6 +7,5 @@
     - python
     - java
     - git
-    - nginx
     - mysql
     - maven

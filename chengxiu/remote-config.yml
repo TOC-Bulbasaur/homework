@@ -1,5 +1,5 @@
 ---
-- hosts: remote, db2
+- hosts: bg
   become: true
   gather_facts: False
 

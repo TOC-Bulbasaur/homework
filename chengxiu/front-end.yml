@@ -1,5 +1,5 @@
 ---
-- hosts: web1, web2
+- hosts: web
   become: true
   gather_facts: False
 
@@ -7,3 +7,4 @@
     - python
     - git
     - nginx
+    - keepalived

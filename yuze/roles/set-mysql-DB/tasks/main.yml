@@ -2,17 +2,21 @@
 - name: Install Mysql-Python
   apt:
     name: python-mysqldb
-    update_cache: yes
-- name: Create a new database with name 'dbInfo'
+    # update_cache: yes
+- name: Create a new database with name 'db_meeting'
   mysql_db:
     login_user: root
     login_password: root
-    name: dbInfo
+    name: db_meeting
     state: present
+- name: copy sql file to server
+  copy:
+    src: db_meeting.sql
+    dest: /tmp
 - name: Import file.sql similar to mysql -u <username> -p <password> < hostname.sql
   mysql_db:
     login_user: root
     login_password: root
-    name: dbInfo
+    name: db_meeting
     state: import
-    target: /tmp/tablecreate.sql
+    target: /tmp/db_meeting.sql

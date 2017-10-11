@@ -1,0 +1,26 @@
+---
+- name: build a front Service
+  hosts: test_vagrant
+  sudo: true
+  remote_user: vagrant
+  tasks:
+    - name: Remove directory structure
+      file:
+        path: "{{ item }}"
+        state: absent
+      with_items:
+        - /var/client_build.tar
+        - /var/build
+        - /var/deploy_front.sh
+    - name: Copy front tar
+      copy:
+        src: ../client_build.tar
+        dest: /var
+    - name: tar xvf front package
+      command: tar xvf /var/client_build.tar -C /var
+    - name: Copy deploy shell script
+      copy:
+        src: ./deploy_front.sh
+        dest: /var
+#    - name: run front package
+#      command: sh /var/deploy_front.sh

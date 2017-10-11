@@ -1,0 +1,10 @@
+---
+- name: install supervisor
+  apt:
+    name: supervisor
+- name: copy conf file
+  copy:
+    src: supervisor.conf
+    dest: /etc/supervisor/conf.d
+- name: run supervisor
+  command: sudo supervisord

@@ -1,0 +1,12 @@
+---
+- name: build a Jenkins Service
+  hosts: test_vagrant
+  sudo: true
+  remote_user: vagrant
+  tasks:
+    - name: Copy project jar
+      copy:
+        src: ./run_jar.sh
+        dest: /var
+#    - name: Run project jar
+#      command: sh /var/run_jar.sh

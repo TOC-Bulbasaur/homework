@@ -1,0 +1,15 @@
+mysql>grant all on *.* to root@'192.168.1.%' identified by '123456';
+Query OK, 0 rows affected (0.01 sec)
+
+show master status;
+
+mysql>change master to master_host='192.168.1.232',master_user='root',master_password='123456',master_log_file='mysql-bin.000016',master_log_pos=615;
+
+> GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'root' WITH GRANT OPTION; 
+> flush privileges;
+> select host from user where user='root';
+
+show slave status \G;
+
+ Slave_IO_Running: Yes
+Slave_SQL_Running: Yes

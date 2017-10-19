@@ -16,3 +16,4 @@
        login_host: "0.0.0.0"
        name: test
        state: present
+       priv: '*.*:ALL,GRANT'

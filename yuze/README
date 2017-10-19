@@ -5,7 +5,12 @@ IP:
 80，nginx代理服务器
 20，Jenkins服务器
 
+在CI环境给Jenkins用户sudo免密权限
 ubuntu 先执行 sudo visudo
 添加jenkins    ALL=(ALL) NOPASSWD: ALL
 
-nginx 访问ip：端口不用加文件夹名。我也不知道为啥
+使用supervisor始终保持项目运行
+sudo unlink /var/run/supervisor.sock
+
+后端响应头加入CORS，解决跨域请求
+resp.setHeader("Access-Control-Allow-Origin", "*");

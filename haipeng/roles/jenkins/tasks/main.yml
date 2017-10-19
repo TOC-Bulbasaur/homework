@@ -5,6 +5,10 @@
     yum:
        name: java-1.8.0-openjdk
        state: latest
+  - name: yum install node.js
+    yum:
+       name: nodejs
+       state: latest
   - name: add jenkins.repo
     template:
        src: jenkins.repo

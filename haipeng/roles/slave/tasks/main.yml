@@ -1,0 +1,17 @@
+  - name: yum install java
+    yum:
+       name: java-1.8.0-openjdk
+       state: latest    
+  - name: yum install maven
+    yum:
+       name: maven
+       state: latest      
+  - name: add spring-boot.service
+    template:
+       src: spring-boot.service
+       dest: /usr/lib/systemd/system/
+  - name: systemctl 
+    command:
+       systemctl daemon-reload \
+       && systemctl enable spring-boot.service \
+       && systemctl start spring-boot.service

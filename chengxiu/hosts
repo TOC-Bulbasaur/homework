@@ -3,11 +3,11 @@
 
 [bg]
 192.168.30.2
-192.168.30.222
+192.168.30.222 ansible_ssh_user=remote ansible_ssh_pass=remote
 
 [web]
-192.168.30.3
-192.168.30.33 ansible_ssh_user=ubuntu ansible_ssh_pass=ubuntu
+192.168.30.3 ansible_ssh_user=remote ansible_ssh_pass=remote
+192.168.30.31 ansible_ssh_user=remote ansible_ssh_pass=remote
 
 [nginx]
 192.168.30.14
@@ -15,3 +15,4 @@
 [db]
 192.168.30.15
 192.168.30.25
+

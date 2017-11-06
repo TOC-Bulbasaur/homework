@@ -5,6 +5,7 @@
 
   roles:
     - python
-    - git
-    - nginx
-    - keepalived
+#    - git
+#    - nginx
+#    - keepalived
+    - docker

@@ -5,8 +5,9 @@
 
   roles:
     - python
-    - java
-    - git
-    - mysql
-    - maven
-    - supervisor
+    - docker
+#    - java
+#    - git
+#    - mysql
+#    - maven
+#    - supervisor

@@ -1,0 +1,25 @@
+---
+- name: add docker repo
+  apt_repository:
+    repo="deb https://download.docker.com/linux/ubuntu xenial stable"
+    state=present
+
+- name: install repo gpg key
+  apt_key:
+    url="https://download.docker.com/linux/ubuntu/gpg"
+    state=present
+
+- name: refresh cache and install docker-ce
+  apt: name={{item}} update_cache=yes state=latest
+  with_items:
+    - docker
+    - docker-compose
+
+- name: Install docker-py
+  raw:
+    pip install docker-py
+
+- name: Start docker service
+  service:
+    name=docker
+    state=started

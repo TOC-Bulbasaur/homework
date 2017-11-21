@@ -1,0 +1,17 @@
+---
+- name: install node.js
+  apt:
+    name: nodejs
+    update_cache: yes
+
+- name: install npm
+  apt:
+    name: npm
+
+- name: install node
+  apt:
+    name: node
+
+- name: install nodejs-legacy
+  apt:
+    name: nodejs-legacy

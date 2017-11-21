@@ -11,4 +11,5 @@
     # - install-nginx
     # - install-keepalived
     #- ansible-jenkins-pipeline-master
-    - install-ansible
+    # - install-ansible
+    - install-npm

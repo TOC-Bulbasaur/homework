@@ -31,24 +31,6 @@ Vagrant.configure("2") do |config|
 
   end
 
-  config.vm.define "default0" do |default0|
-
-    default0.vm.box = "ubuntu/trusty64"
-    default0.vm.network "forwarded_port", guest: 8080, host: 9081
-    default0.vm.network "forwarded_port", guest: 80, host: 9091
-
-    default0.vm.network "private_network", ip: "192.168.33.90"
-    default0.vm.provision "ansible" do |ansb|
-      ansb.playbook = "jnhomeworkplaybook.yml"
-      # ansb.sudo = true
-    end
-
-    default0.vm.provider "virtualbox" do |vb|
-      vb.memory = "4096"
-    end
-
-  end
-
   config.vm.define "web1" do |web1|
 
     web1.vm.box = "ubuntu/trusty64"

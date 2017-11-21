@@ -1,0 +1,11 @@
+---
+- copy:
+    src: homework-backend.service
+    dest: /etc/init.d/homework-backend.service
+    owner: root
+    group: root
+    mode: 0777
+
+- service:
+    name: homework-backend.service
+    enabled: yes

@@ -8,3 +8,8 @@
   copy:
     src: ../../../hosts
     dest: /etc/ansible/hosts
+
+- name: config ansible
+  copy:
+    src: ansible.cfg
+    dest: /etc/ansible/ansible.cfg

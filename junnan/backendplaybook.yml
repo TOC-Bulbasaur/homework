@@ -1,0 +1,8 @@
+---
+- name: install nginx
+  hosts: all
+  become: true
+  roles: 
+    # - install-nginx
+    # - install-java
+    - set-jar-as-service

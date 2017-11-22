@@ -1,8 +1,12 @@
 ---
+- name: add repository
+  apt_repository: repo='ppa:ansible/ansible'
+
 - name: installing ansible
   apt:
     name: ansible
-    state: installed
+    update_cache: yes
+    state: latest
 
 - name: config hosts
   copy:

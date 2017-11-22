@@ -2,4 +2,4 @@
 - name: installing python
   apt:
     name: python
-    state: installed
+    state: latest

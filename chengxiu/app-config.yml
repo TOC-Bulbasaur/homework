@@ -1,7 +1,7 @@
 ---
-- hosts: bg
+- hosts: todolist
   become: true
-  gather_facts: False
+  gather_facts: false
 
   roles:
     - python

@@ -32,125 +32,19 @@ Vagrant.configure("2") do |config|
 
   end
 
-  config.vm.define "bg1" do |bg1|
+  config.vm.define "todolist" do |todolist|
 
-      bg1.vm.box = "ubuntu/xenial64"
+      todolist.vm.box = "ubuntu/xenial64"
 
-      bg1.vm.network "private_network", ip: "192.168.30.2"
+      todolist.vm.network "private_network", ip: "192.168.30.36"
 
-      bg1.vm.provision :ansible do |ansible|
-        ansible.playbook = "remote-config.yml"
+      todolist.vm.provision :ansible do |ansible|
+        ansible.playbook = "app-config.yml"
         ansible.inventory_path = "hosts"
-        ansible.limit = '192.168.30.2'
+        ansible.limit = '192.168.30.36'
       end
 
-      bg1.vm.provider "virtualbox" do |vb|
-        vb.memory = "2048"
-      end
-
-  end
-
-  config.vm.define "bg2" do |bg2|
-
-      bg2.vm.box = "ubuntu/xenial64"
-
-      bg2.vm.network "private_network", ip: "192.168.30.222"
-
-      bg2.vm.provision :ansible do |ansible|
-        ansible.playbook = "remote-config.yml"
-        ansible.inventory_path = "hosts"
-        ansible.limit = '192.168.30.222'
-      end
-
-      bg2.vm.provider "virtualbox" do |vb|
-        vb.memory = "2048"
-      end
-
-  end
-
-  config.vm.define "web1" do |web1|
-
-      web1.vm.box = "ubuntu/xenial64"
-
-      web1.vm.network "private_network", ip: "192.168.30.3"
-
-      web1.vm.provision :ansible do |ansible|
-        ansible.playbook = "front-end.yml"
-        ansible.inventory_path = "hosts"
-        ansible.limit = '192.168.30.3'
-      end
-
-      web1.vm.provider "virtualbox" do |vb|
-        vb.memory = "2048"
-      end
-
-  end
-
-  config.vm.define "web2" do |web2|
-
-        web2.vm.box = "ubuntu/xenial64"
-
-        web2.vm.network "private_network", ip: "192.168.30.31"
-
-        web2.vm.provision :ansible do |ansible|
-          ansible.playbook = "front-end.yml"
-          ansible.inventory_path = "hosts"
-          ansible.limit = '192.168.30.31'
-        end
-
-        web2.vm.provider "virtualbox" do |vb|
-          vb.memory = "2048"
-        end
-
-    end
-
-  config.vm.define "nginx" do |nginx|
-
-      nginx.vm.box = "ubuntu/xenial64"
-
-      nginx.vm.network "private_network", ip: "192.168.30.14"
-
-      nginx.vm.provision :ansible do |ansible|
-        ansible.playbook = "nginx.yml"
-      end
-
-      nginx.vm.provider "virtualbox" do |vb|
-        vb.memory = "2048"
-      end
-
-  end
-
-  config.vm.define "db1" do |db1|
-
-      db1.vm.box = "ubuntu/xenial64"
-
-      db1.vm.network "private_network", ip: "192.168.30.15"
-
-      db1.vm.provision :ansible do |ansible|
-        ansible.playbook = "db.yml"
-        ansible.inventory_path = "hosts"
-        ansible.limit = '192.168.30.15'
-      end
-
-      db1.vm.provider "virtualbox" do |vb|
-        vb.memory = "2048"
-      end
-
-  end
-
-  config.vm.define "db2" do |db2|
-
-      db2.vm.box = "ubuntu/xenial64"
-
-      db2.vm.network "private_network", ip: "192.168.30.25"
-
-      db2.vm.provision :ansible do |ansible|
-        ansible.playbook = "db.yml"
-        ansible.inventory_path = "hosts"
-        ansible.limit = '192.168.30.25'
-      end
-
-      db2.vm.provider "virtualbox" do |vb|
+      todolist.vm.provider "virtualbox" do |vb|
         vb.memory = "2048"
       end
 
